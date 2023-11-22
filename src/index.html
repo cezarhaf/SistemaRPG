@@ -1,73 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<title>Liang Feng Mortal</title>
-
-  <?!= include("EtilosPrincipais"); ?>
-  <?!= include("JS_tabelAtributo"); ?>
-  
-  
+    <meta charset="UTF-8">
+    <title>Liang Feng Mortal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <?!= include("Css/EstilosPrincipais"); ?>
+    <?!= include("Atributos/JS_Atributos"); ?>
+    <?!= include("JS_Principal"); ?>
 </head>
 <body>
-<?!= include("MenuLateral"); ?>
-<div class="container">
-  <div class="header">
-    <h1>Liang Feng Mortal</h1>
-  </div>
-  
-  <div class="description">
-    <p>Liang Feng é uma força complexa e intrigante, caracterizado por sua natureza desafiadora e egoísta</p>
-    <!-- Restante da descrição -->
-  </div>
-
- <div class="atributos-container">
-  <div class="atributos-header">
-    Atributos
-  </div>
-  
-  
-  <table class="atributos-table">
-  <tr>
-    <th class="atributos-th">Pontos Disponíveis</th>
-    <td class="atributos-td" id="pontos-disponiveis">10</td>
-  </tr>
-  <tr>
-    <th class="atributos-th">Inteligência</th>
-    <td class="atributos-td">
-      <button class="atributo-btn menos" onclick="alterarAtributo('inteligencia', -1)">-</button>
-      <span id="inteligencia">10</span>
-      <button class="atributo-btn mais" onclick="alterarAtributo('inteligencia', 1)">+</button>
-    </td>
-  </tr>
-  <tr>
-    <th class="atributos-th">Força</th>
-    <td class="atributos-td">
-      <button class="atributo-btn menos" onclick="alterarAtributo('forca', -1)">-</button>
-      <span id="forca">6</span>
-      <button class="atributo-btn mais" onclick="alterarAtributo('forca', 1)">+</button>
-    </td>
-  </tr>
-  <tr>
-    <th class="atributos-th">Terra</th>
-    <td class="atributos-td">
-      <button class="atributo-btn menos" onclick="alterarAtributo('terra', -1)">-</button>
-      <span id="terra">6</span>
-      <button class="atributo-btn mais" onclick="alterarAtributo('terra', 1)">+</button>
-    </td>
-  </tr>
-  <tr>
-    <th class="atributos-th">Cultivação</th>
-    <td class="atributos-td">
-      <button class="atributo-btn menos" onclick="alterarAtributo('cultivacao', -1)">-</button>
-      <span id="cultivacao">1</span>
-      <button class="atributo-btn mais" onclick="alterarAtributo('cultivacao', 1)">+</button>
-    </td>
-  </tr>
-  <!-- Adicione mais linhas conforme necessário -->
-</table>
-
-</div>
-
+    <div id="overlay" style="display:none;">
+        <div class="loader"></div>
+    </div>
+    <?!= include("MenuLateral"); ?>
+    <div class="container">
+        <div class="header">
+            <h1>Liang Feng Mortal</h1>
+        </div>
+        <div class="description">
+            <p>Liang Feng é uma força complexa e intrigante, caracterizado por sua natureza desafiadora e egoísta.</p>
+            <!-- Restante da descrição -->
+        </div>
+        <div class="atributosContainer" id="atributosContainer">
+            <?!= include("Atributos/Atributos"); ?>
+            <?!= include("Atributos/JS_Atributos"); ?>
+            
+        </div>
+    </div>
 </body>
 </html>

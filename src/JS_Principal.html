@@ -1,0 +1,61 @@
+<script>
+    var conclusaoFuncoes = {
+        IniciarAtributo: false,
+        ResetarAtributos: false,
+        SalvarAtributos: false
+    };
+  
+  function IniciarAtributo() {
+  verificarEConcluirOverlay("IniciarAtributo");
+  google.script.run.withSuccessHandler(definirValoresAtributos)
+                   .pegarValoresAtributos();
+
+}
+function PreencherPontosDisponiveis(resultado) {
+  console.log("resultado="+resultado)
+   $('#pontosDisponiveis').text(resultado);
+   MostrarAtributos();
+
+}
+
+function MostrarAtributos() {
+    $('#atributosContainer').show();
+    
+}
+function EsconderTudo() {
+    $('#atributosContainer').show();
+}
+
+function ErroCarregamentoPrincipal(erro) {
+  // Fazer algo com o erro
+  console.error("Ocorreu um erro: " + erro.message);
+}
+
+function mostrarOverlay() {
+  console.log("mostrarOverlay")
+    document.getElementById('overlay').style.display = 'flex';
+}
+
+function ocultarOverlay() {
+  console.log("ocultarOverlay")
+    document.getElementById('overlay').style.display = 'none';
+}
+function verificarEConcluirOverlay(chave) {
+  console.log("")
+  console.log("verificarEConcluirOverlay("+chave+")")
+  console.log("conclusaoFuncoes")
+  console.log(conclusaoFuncoes)
+  conclusaoFuncoes[chave]=false;
+  console.log("conclusaoFuncoes=false")
+  console.log(conclusaoFuncoes)
+    mostrarOverlay(); // Mostra o overlay
+
+    var intervalo = setInterval(function() {
+        if (conclusaoFuncoes[chave] === true) {
+            ocultarOverlay(); // Oculta o overlay
+            clearInterval(intervalo); // Limpa o intervalo para parar o polling
+        }
+    }, 500); // Verifica a cada 500 milissegundos (0,5 segundo)
+}
+
+</script>
