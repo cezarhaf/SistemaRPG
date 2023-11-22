@@ -1,2 +1,69 @@
 <script>
+
+  var valoresPontosDisponiveisIniciais;
+  var valoresIniciais;
+
+function definirValoresAtributos(valoresAtributos) { 
+    console.log(valoresAtributos)
+    console.log("valoresAtributos")
+  valoresIniciais = valoresAtributos;
+
+  // Atualizando os valores na página
+  document.getElementById('metal').innerText = valoresIniciais.metal;
+  document.getElementById('agua').innerText = valoresIniciais.agua;
+  document.getElementById('fogo').innerText = valoresIniciais.fogo;
+  document.getElementById('madeira').innerText = valoresIniciais.madeira;
+  document.getElementById('terra').innerText = valoresIniciais.terra;
+  PreencherPontosDisponiveis(valoresIniciais.pontosdisponiveis)
+  conclusaoFuncoes.IniciarAtributo=true;
+}
+function alterarAtributo(atributo, delta) {
+    console.log("atributo, delta")
+    console.log(atributo, delta)
+  var pontosDisponiveisElement = document.getElementById('pontosDisponiveis');
+  console.log("pontosDisponiveisElement="+pontosDisponiveisElement);
+  var pontosDisponiveis = parseInt(pontosDisponiveisElement.innerText, 10);
+  
+  var atributoElement = document.getElementById(atributo);
+  console.log("atributoElement="+atributoElement);
+  var valorAtual = parseInt(atributoElement.innerText, 10);
+  console.log(delta+" < 0 &&"+ valoresIniciais[atributo] +"> "+valorAtual);
+  if (delta < 0 &&valorAtual> valoresIniciais[atributo] ) { // Para diminuir, o valor atual deve ser maior que 0
+    atributoElement.innerText = valorAtual + delta;
+    pontosDisponiveisElement.innerText = pontosDisponiveis - delta; // Aumenta os pontos disponíveis
+  } else if (delta > 0 && pontosDisponiveis > 0) { // Para aumentar, deve haver pontos disponíveis
+    atributoElement.innerText = valorAtual + delta;
+    pontosDisponiveisElement.innerText = pontosDisponiveis - delta; // Diminui os pontos disponíveis
+  }
+}
+function SalvarAtributos() {
+  verificarEConcluirOverlay("SalvarAtributos")
+    // Atualizando valoresIniciais com os valores atuais do DOM
+    valoresIniciais.metal = document.getElementById('metal').innerText;
+    valoresIniciais.agua = document.getElementById('agua').innerText;
+    valoresIniciais.fogo = document.getElementById('fogo').innerText;
+    valoresIniciais.madeira = document.getElementById('madeira').innerText;
+    valoresIniciais.terra = document.getElementById('terra').innerText;
+    valoresIniciais["pontos disponiveis"] = document.getElementById('pontosDisponiveis').innerText;
+
+    // Chamando a função do lado do servidor para salvar os dados
+    google.script.run.withSuccessHandler(FinalizarSalvarAtributos).salvarDadosNaPlanilha(valoresIniciais);
+}
+function FinalizarSalvarAtributos() {
+  conclusaoFuncoes.SalvarAtributos=true;
+}
+function ResetarAtributos() {
+    // Verifica se valoresIniciais está definido e tem as propriedades necessárias
+    if (valoresIniciais && Object.keys(valoresIniciais).length > 0) {
+        // Atualiza os elementos do DOM com os valores iniciais
+        if (valoresIniciais.metal) document.getElementById('metal').innerText = valoresIniciais.metal;
+        if (valoresIniciais.agua) document.getElementById('agua').innerText = valoresIniciais.agua;
+        if (valoresIniciais.fogo) document.getElementById('fogo').innerText = valoresIniciais.fogo;
+        if (valoresIniciais.madeira) document.getElementById('madeira').innerText = valoresIniciais.madeira;
+        if (valoresIniciais.terra) document.getElementById('terra').innerText = valoresIniciais.terra;
+        if (valoresIniciais["pontos disponiveis"]) document.getElementById('pontosDisponiveis').innerText = valoresIniciais["pontos disponiveis"];
+    } else {
+        console.error("Erro: valoresIniciais não está definido ou não possui propriedades.");
+    }
+}
 </script>

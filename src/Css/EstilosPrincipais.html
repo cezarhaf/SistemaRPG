@@ -1,0 +1,142 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #333;
+    padding: 20px;
+  }
+  .container {
+    width: 430px;
+    margin: auto;
+    background-color: #1a1a1a;
+    border: 2px solid #4caf50;
+    padding: 20px;
+  }
+  .header {
+    background-color: #009688;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #4caf50;
+  }
+  .bodyContent {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  .atributosContainer {
+    width: 100%;
+    max-width: 430px;
+    margin: auto;
+    background-color: #111;
+    border: 3px solid #4caf50;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+  }
+  .atributosTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .atributosTh, .atributosTd {
+    padding: 10px;
+    border: 1px solid #4caf50;
+    background-color: #222;
+  }
+  .atributosTh {
+    background-color: #333;
+  }
+  .atributosTd {
+    background-color: #252525;
+    text-align: center;
+  }
+  .atributoBtn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  .atributoBtnMenos {
+    /* Estilos adicionais para o botão "menos" se necessário */
+  }
+  .atributoBtnMais {
+    /* Estilos adicionais para o botão "mais" se necessário */
+  }
+  .menuLateral {
+    position: fixed; /* Fixar o menu à esquerda da página */
+    top: 0; /* Alinhar com o topo da página */
+    left: 0; /* Alinhar com a esquerda da página */
+    width: 200px; /* Largura do menu lateral */
+    height: 100%; /* Altura total da janela de visualização */
+    background-color: #111; /* Cor de fundo do menu */
+    border-right: 2px solid #4caf50; /* Borda direita para se destacar do conteúdo */
+    padding-top: 20px; /* Espaço no topo dentro do menu */
+  }
+  .menuLateral ul {
+    list-style-type: none; /* Remover estilos de lista */
+    padding: 0; /* Remover padding padrão */
+    margin: 0; /* Remover margin padrão */
+  }
+  .menuLateral li a {
+    display: block; /* Fazer o link preencher o li */
+    padding: 10px; /* Espaçamento dentro dos itens do menu */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    border-bottom: 1px solid #4caf50; /* Borda entre itens do menu */
+  }
+  .menuLateral li a:hover {
+    background-color: #009688; /* Cor de fundo ao passar o mouse */
+  }
+  .atributosContainer {
+    display: none;
+    /* Outras propriedades... */
+}
+
+#overlay {
+    position: fixed; /* Posição fixa no topo do documento */
+    display: flex; /* Usando Flexbox para centralização */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 1000; /* Z-index alto para ficar acima de outros elementos */
+}
+
+/* Estilos para o loader (pode ser substituído por qualquer estilo de loader que você preferir) */
+.loader {
+    border: 5px solid #f3f3f3; /* Cor da borda externa */
+    border-top: 5px solid #3498db; /* Cor da borda superior (parte que gira) */
+    border-radius: 50%; /* Formato circular */
+    width: 50px; /* Largura do loader */
+    height: 50px; /* Altura do loader */
+    animation: spin 2s linear infinite; /* Animação de giro */
+}
+
+/* Animação do loader */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.botoesDireita {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.atributosHeader {
+    text-align: center; /* Centraliza o texto */
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+    margin-top: 20px; /* Espaço no topo */
+    margin-bottom: 20px; /* Espaço na parte inferior */
+    /* Adicione outros estilos como cor da fonte, tipo de letra, etc., conforme necessário */
+}
+
+</style>
